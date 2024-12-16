@@ -1,3 +1,2 @@
-Main.class
-UndirectedGraph.class
+*.class
 .DS_Store
