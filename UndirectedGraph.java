@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class UndirectedGraph<K, V>{
       private Map<K, List<V>> graph;
-      int size;
+      private int size;
 
       /**
       * Default consructor, creates a new graph and allows user to choose their
@@ -33,6 +33,9 @@ public class UndirectedGraph<K, V>{
       public void connectVertices(K key, V value){
         this.graph.get(key).add(value);
 
+        /*
+        this may not be necessary
+        */
         for(List<V> adjacentVertices: this.graph.values()){
           adjacentVertices.add(value);
         }
