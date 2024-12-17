@@ -22,22 +22,22 @@ public class Main{
 		myGraph.connectVertices(0, 5);
 		myGraph.connectVertices(0, 6);
 
-		myGraph.connectVertices(1, 0);
-		myGraph.connectVertices(2, 0);
+		// myGraph.connectVertices(1, 0);
+		// myGraph.connectVertices(2, 0);
 
 		myGraph.connectVertices(3, 4);
 		myGraph.connectVertices(3, 5);
 
-		myGraph.connectVertices(4, 3);
+		// myGraph.connectVertices(4, 3);
 		myGraph.connectVertices(4, 5);
 		myGraph.connectVertices(4, 6);
 
-		myGraph.connectVertices(5, 0);
-		myGraph.connectVertices(5, 3);
-		myGraph.connectVertices(5, 4);
+		// myGraph.connectVertices(5, 0);
+		// myGraph.connectVertices(5, 3);
+		// myGraph.connectVertices(5, 4);
 
-		myGraph.connectVertices(6, 0);
-		myGraph.connectVertices(6, 4);
+		// myGraph.connectVertices(6, 0);
+		// myGraph.connectVertices(6, 4);
 
 		return myGraph;
 	}

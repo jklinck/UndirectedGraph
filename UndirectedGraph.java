@@ -26,19 +26,22 @@ public class UndirectedGraph<K, V>{
       }
 
       /**
-      * Connects two vertices in the graph.
+      * Connects two vertices in the graph. Retrieves the key 
+      * paramter and adds value parameter to it's adjacency list. 
+      * Then performs the same operation in reverse and retrieves the 
+      * value (which is also a key) and add the key (which is now a value) 
+      * to it's adjacency list. Casting is performed on the second line since 
+      * there is a type issue if you do not since we are treating a parameter of 
+      * type V as a key, thus it needs to be casted to type K. The value being 
+      * added also needs to be cast as it is of type K and needs to be cast to 
+      * type V. 
+      * 
       * @param key - K
       * @param value - V
       */
       public void connectVertices(K key, V value){
         this.graph.get(key).add(value);
-
-        /*
-        this may not be necessary
-        */
-        for(List<V> adjacentVertices: this.graph.values()){
-          adjacentVertices.add(value);
-        }
+        this.graph.get((K)value).add((V)key);
       }
 
       /**
