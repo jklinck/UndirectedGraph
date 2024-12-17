@@ -48,12 +48,12 @@ public class Main{
 	public static void testGraph(){
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 
+		System.out.println();
 		myGraph.printAllVertices();
 		System.out.println("Should return 7, returns " + myGraph.getSize());
 		myGraph.deleteVertex(6);
 		System.out.println("Should return 6, returns " + myGraph.getSize());
 		myGraph.printAllVertices();
-		System.out.println();
 	} 
 
 	/**
@@ -68,7 +68,7 @@ public class Main{
 	 * Selection menu for user.
 	 */
 	public static void userMenu(){
-		System.out.println("What would you like to test?");
+		System.out.println("\nWhat would you like to test?");
 		System.out.println("    1. Test graph methods.");
 		System.out.println("    2. Test topologicalSearch exception method.");
 		System.out.println("    3. Exit program.");
@@ -99,14 +99,12 @@ public class Main{
 					System.out.println("Invalid option, please make another selection.");
 					// clear the input buffer
 					input.nextLine();
-					userMenu();
 				}
 			}
 			else{
 				System.out.println("Invalid option, please make another selection.");
 				// clear the input buffer
 				input.nextLine();
-				userMenu();
 				continue;
 			}
 		}
