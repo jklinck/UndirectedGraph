@@ -61,18 +61,22 @@ public class Main{
 	} 
 
 	/**
-	 * Tests topologicalSearch exception method. 
+	 * Tests breadthFirstSearch method. 
 	 */
 	public static void breadthFirstSearchTest(){
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
+		System.out.println("Should print: 0 1 2 5 6 3 4");
+		System.out.printf("Prints:       ");
 		myGraph.breadthFirstSearch();
 	} 
 
 	/**
-	 * Tests topologicalSearch exception method. 
+	 * Tests depthFirstSearch method. 
 	 */
 	public static void depthFirstSearchTest(){
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
+		System.out.println("Should print: 0 1 2 5 3 4 6");
+		System.out.printf("Prints:       ");
 		myGraph.depthFirstSearch();
 	} 
 

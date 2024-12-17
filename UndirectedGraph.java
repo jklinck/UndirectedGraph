@@ -22,7 +22,10 @@ public class UndirectedGraph<K, V>{
       }
 
       /**
-      * Adds a vertex to the graph and also increments the size of the graph.
+      * Adds a vertex to the graph and also increments the size of the graph. If 
+      * the graph is empty it will assign the key being added as the firstKey. We 
+      * need the first key for use as a starting point of the BFS and DFS methods. 
+      * 
       * @param key - K
       */
       public void addVertex(K key){
@@ -106,46 +109,47 @@ public class UndirectedGraph<K, V>{
       public void breadthFirstSearch(){
         HashSet<K> seen = new HashSet<>();
         Queue<K> queue = new LinkedList<>();
-        K current = this.firstKey;
 
-        for(K key: this.graph.keySet()){
-          if(!seen.contains(key)){
-            queue.add(key);
-          }
-          // for(List<V> adjacentVertices: this.graph.values()){
-          //   if(!seen.contains((K)adjacentVertices)){
-          //     queue.add((K)adjacentVertices);
-          //   }
-          // }
-        }
+        queue.add(firstKey);
 
-        System.out.println("Start: ");
         while(!queue.isEmpty()){
-          System.out.println(queue.poll());
-        }
-        System.out.println("End.");
+          K current = queue.poll();
+          if(!seen.contains(current)){
+            seen.add(current);
+            System.out.printf("%s ", current);
+          }
 
-         /*
-        should print [0, 1, 2, 5, 6, 3, 4]
-        */
+          for(V adjacent : this.graph.get(current)){
+            if(!seen.contains((K)adjacent)){
+              queue.add((K)adjacent);
+            } 
+          }
+        }
       }
 
       /*
       * Performs a depth first search on the graph and prints it out.
       */
       public void depthFirstSearch(){
+        // this is not working correctly
         HashSet<K> seen = new HashSet<>();
         Stack<K> stack = new Stack<>();
-        K current = this.firstKey;
+        
+        stack.push(firstKey);
 
+        while(!stack.isEmpty()){
+          K current = stack.pop();
+          if(!seen.contains(current)){
+            seen.add(current);
+            System.out.printf("%s ", current);
+          }
 
-
-
-
-
-
-
-
+          for(V adjacent : this.graph.get(current)){
+            if(!seen.contains((K)adjacent)){
+              stack.push((K)adjacent);
+            } 
+          }
+        }
       /*
       should print [0, 1, 2, 5, 3, 4, 6]
       */
