@@ -89,14 +89,18 @@ public class UndirectedGraph<K, V>{
       * Performs a breadth first search on the graph and prints it out.
       */
       public void breadthFirstSearch(UndirectedGraph myGraph){
-        
+      /*
+      should print [0, 1, 2, 5, 6, 3, 4]
+      */
       }
 
       /*
       * Performs a depth first search on the graph and prints it out.
       */
       public void depthFirstSearch(UndirectedGraph myGraph){
-        
+      /*
+      should print [0, 1, 2, 5, 3, 4, 6]
+      */
       }
 
       /**
