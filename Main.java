@@ -57,16 +57,6 @@ public class Main{
 	} 
 
 	/**
-	 * Selection menu for user.
-	 */
-	public static void selection(){
-		System.out.println("What would you like to test?");
-		System.out.println("    1. Test graph methods.");
-		System.out.println("    2. Test topologicalSearch exception method.");
-		System.out.println("    3. Exit program.");
-	}
-
-	/**
 	 * Tests topologicalSearch exception method. 
 	 */
 	public static void testTopologicalSearchException(){
@@ -74,39 +64,49 @@ public class Main{
 		myGraph.topologicalSearch();
 	} 
 
+	/**
+	 * Selection menu for user.
+	 */
+	public static void userMenu(){
+		System.out.println("What would you like to test?");
+		System.out.println("    1. Test graph methods.");
+		System.out.println("    2. Test topologicalSearch exception method.");
+		System.out.println("    3. Exit program.");
+	}
+
 	public static void main(String[] args){
-		int selection = -1;
+		int userSelection = -1;
 		boolean exit = false;
 
 		Scanner input = new Scanner(System.in);
-		selection();
+		userMenu();
 
 		while(!exit){
 			if(input.hasNextInt()){
-				selection = input.nextInt();
+				userSelection = input.nextInt();
 
-				if(selection == 1){
+				if(userSelection == 1){
 					testGraph();
-					selection();
+					userMenu();
 				}
-				else if(selection == 2){
+				else if(userSelection == 2){
 					testTopologicalSearchException();
 				}
-				else if(selection == 3){
+				else if(userSelection == 3){
 					exit = true;
 				}
 				else{
 					System.out.println("Invalid option, please make another selection.");
 					// clear the input buffer
 					input.nextLine();
-					selection();
+					userMenu();
 				}
 			}
 			else{
 				System.out.println("Invalid option, please make another selection.");
 				// clear the input buffer
 				input.nextLine();
-				selection();
+				userMenu();
 				continue;
 			}
 		}
