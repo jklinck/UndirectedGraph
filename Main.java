@@ -17,27 +17,31 @@ public class Main{
 		myGraph.addVertex(5);
 		myGraph.addVertex(6);
 
+		/*
+		each call below will add the second parameter to the first parameters 
+		adjacency list and will also add the first parameter to the second 
+		parameters adjacency list
+		*/
 		myGraph.connectVertices(0, 1);
 		myGraph.connectVertices(0, 2);
 		myGraph.connectVertices(0, 5);
 		myGraph.connectVertices(0, 6);
-
-		// myGraph.connectVertices(1, 0);
-		// myGraph.connectVertices(2, 0);
-
 		myGraph.connectVertices(3, 4);
 		myGraph.connectVertices(3, 5);
-
-		// myGraph.connectVertices(4, 3);
 		myGraph.connectVertices(4, 5);
 		myGraph.connectVertices(4, 6);
 
-		// myGraph.connectVertices(5, 0);
-		// myGraph.connectVertices(5, 3);
-		// myGraph.connectVertices(5, 4);
+		/*
+		  Adjacency list of the graph created above
+		  0: 1,2,5,6
+		  1: 0
+		  2: 0
+		  3: 4,5
+		  4: 3,5,6
+		  5: 0, 3, 4
+		  6: 0, 4
+		*/
 
-		// myGraph.connectVertices(6, 0);
-		// myGraph.connectVertices(6, 4);
 
 		return myGraph;
 	}
@@ -112,34 +116,5 @@ public class Main{
 		input.close();
 	}
 }
-
-
-/*
-  This is the graph built above
-  0: 1,2,5,6
-  1: 0
-  2: 0
-  3: 4,5
-  4: 3,5,6
-  5: 0, 3, 4
-  6: 0, 4
-*/
-
-/*
-  This is how you could change the graph above to be 
-  undirected and acyclic if you wanted to perform a 
-  topological search
-  0: 1,2,5
-  1: 
-  2: 
-  3: 
-  4: 3,6
-  5: 4
-  6: 
-*/
-
-
-
-
 
 
