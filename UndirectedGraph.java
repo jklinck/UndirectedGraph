@@ -1,18 +1,23 @@
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class UndirectedGraph<K, V>{
       private Map<K, List<V>> graph;
       private int size;
+      private K firstKey;
 
       /**
       * Default consructor, creates a new graph and allows user to choose their
       * data type as well as setting the size to zero.
       */
       public UndirectedGraph(){
-        this.graph = new HashMap<>();
+        this.graph = new LinkedHashMap<>();
         this.size = 0;
       }
 
@@ -21,6 +26,9 @@ public class UndirectedGraph<K, V>{
       * @param key - K
       */
       public void addVertex(K key){
+        if(this.graph.isEmpty()){
+          firstKey = key;
+        }
         this.graph.putIfAbsent(key, new ArrayList<>());
         this.size++;
       }
@@ -51,6 +59,13 @@ public class UndirectedGraph<K, V>{
       */
       public int getSize(){
         return this.size;
+      }
+
+      /**
+       * Return the first key in the graph.
+       */
+      public K getFirstKey(){
+        return this.firstKey;
       }
 
       /**
@@ -88,16 +103,49 @@ public class UndirectedGraph<K, V>{
       /**
       * Performs a breadth first search on the graph and prints it out.
       */
-      public void breadthFirstSearch(UndirectedGraph myGraph){
-      /*
-      should print [0, 1, 2, 5, 6, 3, 4]
-      */
+      public void breadthFirstSearch(){
+        HashSet<K> seen = new HashSet<>();
+        Queue<K> queue = new LinkedList<>();
+        K current = this.firstKey;
+
+        for(K key: this.graph.keySet()){
+          if(!seen.contains(key)){
+            queue.add(key);
+          }
+          // for(List<V> adjacentVertices: this.graph.values()){
+          //   if(!seen.contains((K)adjacentVertices)){
+          //     queue.add((K)adjacentVertices);
+          //   }
+          // }
+        }
+
+        System.out.println("Start: ");
+        while(!queue.isEmpty()){
+          System.out.println(queue.poll());
+        }
+        System.out.println("End.");
+
+         /*
+        should print [0, 1, 2, 5, 6, 3, 4]
+        */
       }
 
       /*
       * Performs a depth first search on the graph and prints it out.
       */
-      public void depthFirstSearch(UndirectedGraph myGraph){
+      public void depthFirstSearch(){
+        HashSet<K> seen = new HashSet<>();
+        Stack<K> stack = new Stack<>();
+        K current = this.firstKey;
+
+
+
+
+
+
+
+
+
       /*
       should print [0, 1, 2, 5, 3, 4, 6]
       */

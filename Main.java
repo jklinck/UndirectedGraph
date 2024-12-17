@@ -63,6 +63,22 @@ public class Main{
 	/**
 	 * Tests topologicalSearch exception method. 
 	 */
+	public static void breadthFirstSearchTest(){
+		UndirectedGraph<Integer, Integer> myGraph = createGraph();
+		myGraph.breadthFirstSearch();
+	} 
+
+	/**
+	 * Tests topologicalSearch exception method. 
+	 */
+	public static void depthFirstSearchTest(){
+		UndirectedGraph<Integer, Integer> myGraph = createGraph();
+		myGraph.depthFirstSearch();
+	} 
+
+	/**
+	 * Tests topologicalSearch exception method. 
+	 */
 	public static void testTopologicalSearchException(){
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 		myGraph.topologicalSearch();
@@ -74,8 +90,10 @@ public class Main{
 	public static void userMenu(){
 		System.out.println("\nWhat would you like to test?");
 		System.out.println("    1. Test graph methods.");
-		System.out.println("    2. Test topologicalSearch exception method.");
-		System.out.println("    3. Exit program.");
+		System.out.println("    2. Test breadth first search.");
+		System.out.println("    3. Test depth first search.");
+		System.out.println("    4. Test topologicalSearch exception method.");
+		System.out.println("    5. Exit program.");
 	}
 
 	public static void main(String[] args){
@@ -94,19 +112,27 @@ public class Main{
 					userMenu();
 				}
 				else if(userSelection == 2){
-					testTopologicalSearchException();
+					breadthFirstSearchTest();
+					userMenu();
 				}
 				else if(userSelection == 3){
+					depthFirstSearchTest();
+					userMenu();
+				}
+				else if(userSelection == 4){
+					testTopologicalSearchException();
+				}
+				else if(userSelection == 5){
 					exit = true;
 				}
 				else{
-					System.out.println("Invalid option, please make another selection.");
+					System.out.println("Invalid option, please select a different number.");
 					// clear the input buffer
 					input.nextLine();
 				}
 			}
 			else{
-				System.out.println("Invalid option, please make another selection.");
+				System.out.println("Invalid option, please only select a number.");
 				// clear the input buffer
 				input.nextLine();
 				continue;
