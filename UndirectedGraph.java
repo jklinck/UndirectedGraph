@@ -1,9 +1,13 @@
+// Interface imports
 import java.util.Map;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.Queue;
+
+// Class imports
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -127,39 +131,70 @@ public class UndirectedGraph<K, V>{
         }
       }
 
-      /*
-      * Performs a depth first search on the graph and prints it out.
+      /**
+      * Depth first search recursive
+      * @param key - K
+      * @param seen - HashSet
       */
-      public void depthFirstSearch(){
-        // this is not working correctly
-        HashSet<K> seen = new HashSet<>();
-        Stack<K> stack = new Stack<>();
-        
-        stack.push(firstKey);
-
-        while(!stack.isEmpty()){
-          K current = stack.pop();
-          if(!seen.contains(current)){
-            seen.add(current);
-            System.out.printf("%s ", current);
-          }
-
-          for(V adjacent : this.graph.get(current)){
-            if(!seen.contains((K)adjacent)){
-              stack.push((K)adjacent);
-            } 
+      public void depthFirstSearchUtil(K key, HashSet<K> seen){
+        seen.add(key);
+        System.out.printf("%s ", key);
+      
+        for(V value: this.graph.get(key)){
+          if(!seen.contains((K)value)){
+              depthFirstSearchUtil((K)value, seen);
           }
         }
-      /*
-      should print [0, 1, 2, 5, 3, 4, 6]
-      */
+      }
+      public void depthFirstSearchRecursive(K key){
+          HashSet<K> seen = new HashSet<>();
+          depthFirstSearchUtil(key, seen);
       }
 
       /**
-      * @param mygraph - UndirectedGraph 
+       * Depth first search iterative
+       * @param startKey  - K
+       */
+      public void depthFirstSearchIterative(K startKey) {
+        Set<K> seen = new HashSet<>(); // To keep track of visited nodes
+        Stack<K> stack = new Stack<>(); // Stack for DFS
+
+        // Push the starting node onto the stack
+        stack.push(startKey);
+
+        while (!stack.isEmpty()) {
+            // Pop a node from the stack
+            K current = stack.pop();
+
+            // If the node has not been seen yet
+            if (!seen.contains(current)) {
+                // Mark it as seen
+                seen.add(current);
+                // Process the current node (optional)
+                System.out.printf("%s ", current);
+
+                // Get the adjacent nodes and push them onto the stack
+                List<V> neighbors = graph.get(current);
+                if (neighbors != null) {
+                    // Push neighbors in reverse order to maintain the correct order
+                    for (int i = neighbors.size() - 1; i >= 0; i--) {
+                        V value = neighbors.get(i);
+                        if (!seen.contains(value)) {
+                            stack.push((K) value);
+                        }
+                    }
+                }
+            }
+        }
+      }
+
+      
+
+      /**
       * Throws an exception if a user attempts to perfrom a topological search on 
       * the graph as topological search cannot be perfromed on an undirected acyclic 
       * graph.
+      * @param mygraph - UndirectedGraph 
       */
       public void topologicalSearch(){
         throw new UnsupportedOperationException("You cannot perfrom topological search on an undirected graph.");

@@ -71,13 +71,23 @@ public class Main{
 	} 
 
 	/**
-	 * Tests depthFirstSearch method. 
+	 * Tests depthFirstSearch recursive method. 
 	 */
-	public static void depthFirstSearchTest(){
+	public static void depthFirstSearchRecursiveTest(){
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 		System.out.println("Should print: 0 1 2 5 3 4 6");
 		System.out.printf("Prints:       ");
-		myGraph.depthFirstSearch();
+		myGraph.depthFirstSearchRecursive(myGraph.getFirstKey());
+	} 
+
+	/**
+	 * Tests depthFirstSearch iterative method. 
+	 */
+	public static void depthFirstSearchIterativeTest(){
+		UndirectedGraph<Integer, Integer> myGraph = createGraph();
+		System.out.println("Should print: 0 1 2 5 3 4 6");
+		System.out.printf("Prints:       ");
+		myGraph.depthFirstSearchIterative(myGraph.getFirstKey());
 	} 
 
 	/**
@@ -95,9 +105,10 @@ public class Main{
 		System.out.println("\nWhat would you like to test?");
 		System.out.println("    1. Test graph methods.");
 		System.out.println("    2. Test breadth first search.");
-		System.out.println("    3. Test depth first search.");
-		System.out.println("    4. Test topologicalSearch exception method.");
-		System.out.println("    5. Exit program.");
+		System.out.println("    3. Test depth first search recursive.");
+		System.out.println("    4. Test depth first search iterative.");
+		System.out.println("    5. Test topologicalSearch exception method.");
+		System.out.println("    6. Exit program.");
 	}
 
 	public static void main(String[] args){
@@ -120,13 +131,17 @@ public class Main{
 					userMenu();
 				}
 				else if(userSelection == 3){
-					depthFirstSearchTest();
+					depthFirstSearchRecursiveTest();
 					userMenu();
 				}
 				else if(userSelection == 4){
-					testTopologicalSearchException();
+					depthFirstSearchIterativeTest();
+					userMenu();
 				}
 				else if(userSelection == 5){
+					testTopologicalSearchException();
+				}
+				else if(userSelection == 6){
 					exit = true;
 				}
 				else{
