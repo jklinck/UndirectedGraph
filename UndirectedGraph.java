@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Stack;
+import java.util.Collections;
 
 public class UndirectedGraph<K, V>{
       private Map<K, List<V>> graph;
@@ -184,6 +185,15 @@ public class UndirectedGraph<K, V>{
                         }
                     }
                 }
+
+                // another way to perform the loop above
+                // List<V> neighbors = graph.get(current);
+                // Collections.reverse(neighbors);
+                // for(V value: neighbors){
+                //     if (!seen.contains(value)) {
+                //             stack.push((K) value);
+                //     }
+                // }
             }
         }
       }
