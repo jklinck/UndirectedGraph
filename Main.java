@@ -82,7 +82,11 @@ public class Main{
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 		System.out.println("Should print: 0 1 2 5 3 4 6");
 		System.out.printf("Prints:       ");
-		myGraph.depthFirstSearchRecursive(myGraph.getFirstKey());
+		// myGraph.depthFirstSearchRecursive(myGraph.getFirstKey());
+		LinkedHashSet<Integer> set = myGraph.depthFirstSearchRecursive(myGraph.getFirstKey());
+		for(Integer node: set){
+			System.out.printf("%d ", node);
+		}
 	} 
 
 	/**
@@ -92,7 +96,11 @@ public class Main{
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 		System.out.println("Should print: 0 1 2 5 3 4 6");
 		System.out.printf("Prints:       ");
-		myGraph.depthFirstSearchIterative(myGraph.getFirstKey());
+		// myGraph.depthFirstSearchIterative(myGraph.getFirstKey());
+		LinkedHashSet<Integer> set = myGraph.depthFirstSearchIterative(myGraph.getFirstKey());
+		for(Integer node: set){
+			System.out.printf("%d ", node);
+		}
 	} 
 
 	/**
@@ -148,6 +156,7 @@ public class Main{
 				}
 				else if(userSelection == 6){
 					exit = true;
+					System.out.println("You have successfully loggged out!\n");
 				}
 				else{
 					System.out.println("Invalid option, please select a different number.");

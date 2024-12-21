@@ -168,7 +168,7 @@ public class UndirectedGraph<K, V>{
       */
       public void depthFirstSearchUtil(K key, HashSet<K> seen){
         seen.add(key);
-        System.out.printf("%s ", key);
+        // System.out.printf("%s ", key);
       
         for(V value: this.graph.get(key)){
           if(!seen.contains((K)value)){
@@ -176,17 +176,61 @@ public class UndirectedGraph<K, V>{
           }
         }
       }
-      public void depthFirstSearchRecursive(K key){
-          HashSet<K> seen = new HashSet<>();
+      public LinkedHashSet<K> depthFirstSearchRecursive(K key){
+          LinkedHashSet<K> seen = new LinkedHashSet<>();
           depthFirstSearchUtil(key, seen);
+
+          return seen;
       }
 
       /**
        * Depth first search iterative
        * @param startKey  - K
        */
-      public void depthFirstSearchIterative(K startKey) {
-        Set<K> seen = new HashSet<>(); // To keep track of visited nodes
+      // public void depthFirstSearchIterative(K startKey){
+      //   Set<K> seen = new HashSet<>(); // To keep track of visited nodes
+      //   Stack<K> stack = new Stack<>(); // Stack for DFS
+
+      //   // Push the starting node onto the stack
+      //   stack.push(startKey);
+
+      //   while (!stack.isEmpty()) {
+      //       // Pop a node from the stack
+      //       K current = stack.pop();
+
+      //       // If the node has not been seen yet
+      //       if (!seen.contains(current)) {
+      //           // Mark it as seen
+      //           seen.add(current);
+      //           // Process the current node (optional)
+      //           System.out.printf("%s ", current);
+
+      //           // Get the adjacent nodes and push them onto the stack
+      //           List<V> neighbors = graph.get(current);
+      //           if (neighbors != null) {
+      //               // Push neighbors in reverse order to maintain the correct order
+      //               for (int i = neighbors.size() - 1; i >= 0; i--) {
+      //                   V value = neighbors.get(i);
+      //                   if (!seen.contains(value)) {
+      //                       stack.push((K) value);
+      //                   }
+      //               }
+      //           }
+
+      //           // another way to perform the loop above
+      //           // List<V> neighbors = graph.get(current);
+      //           // Collections.reverse(neighbors);
+      //           // for(V value: neighbors){
+      //           //     if (!seen.contains(value)) {
+      //           //             stack.push((K) value);
+      //           //     }
+      //           // }
+      //       }
+      //   }
+      // }
+
+      public LinkedHashSet<K> depthFirstSearchIterative(K startKey){
+        LinkedHashSet<K> seen = new LinkedHashSet<>(); // To keep track of visited nodes
         Stack<K> stack = new Stack<>(); // Stack for DFS
 
         // Push the starting node onto the stack
@@ -201,7 +245,7 @@ public class UndirectedGraph<K, V>{
                 // Mark it as seen
                 seen.add(current);
                 // Process the current node (optional)
-                System.out.printf("%s ", current);
+                // System.out.printf("%s ", current);
 
                 // Get the adjacent nodes and push them onto the stack
                 List<V> neighbors = graph.get(current);
@@ -225,6 +269,7 @@ public class UndirectedGraph<K, V>{
                 // }
             }
         }
+        return seen;
       }
 
       
