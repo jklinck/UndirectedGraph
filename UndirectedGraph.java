@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.LinkedHashMap;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.Collections;
@@ -110,9 +111,36 @@ public class UndirectedGraph<K, V>{
 
       /**
       * Performs a breadth first search on the graph and prints it out.
+      * This was my original version, but thought it would be better 
+      * to return the sorted graph instead of printing it. 
       */
-      public void breadthFirstSearch(){
-        HashSet<K> seen = new HashSet<>();
+      // public void breadthFirstSearch(){
+      //   HashSet<K> seen = new HashSet<>();
+      //   Queue<K> queue = new LinkedList<>();
+
+      //   queue.add(firstKey);
+
+      //   while(!queue.isEmpty()){
+      //     K current = queue.poll();
+      //     if(!seen.contains(current)){
+      //       seen.add(current);
+      //       System.out.printf("%s ", current);
+      //     }
+
+      //     for(V adjacent : this.graph.get(current)){
+      //       if(!seen.contains((K)adjacent)){
+      //         queue.add((K)adjacent);
+      //       } 
+      //     }
+      //   }
+      // }
+
+      /**
+       * Performs a breadth first search on the graph and returns it. 
+       * I used a LinkedHashSet to maintain the order of vertices added.
+       */
+      public LinkedHashSet<K> breadthFirstSearch(){
+        LinkedHashSet<K> seen = new LinkedHashSet<>();
         Queue<K> queue = new LinkedList<>();
 
         queue.add(firstKey);
@@ -121,7 +149,7 @@ public class UndirectedGraph<K, V>{
           K current = queue.poll();
           if(!seen.contains(current)){
             seen.add(current);
-            System.out.printf("%s ", current);
+            // System.out.printf("%s ", current);
           }
 
           for(V adjacent : this.graph.get(current)){
@@ -130,6 +158,7 @@ public class UndirectedGraph<K, V>{
             } 
           }
         }
+        return seen;
       }
 
       /**

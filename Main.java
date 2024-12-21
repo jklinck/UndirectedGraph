@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.LinkedHashSet;
 
 public class Main{
 
@@ -67,7 +68,11 @@ public class Main{
 		UndirectedGraph<Integer, Integer> myGraph = createGraph();
 		System.out.println("Should print: 0 1 2 5 6 3 4");
 		System.out.printf("Prints:       ");
-		myGraph.breadthFirstSearch();
+		LinkedHashSet<Integer> set = myGraph.breadthFirstSearch();
+		for(Integer node: set){
+			System.out.printf("%d ", node);
+		}
+
 	} 
 
 	/**
